@@ -7,6 +7,10 @@ $container-width: 100%;
 $container-max-width: 1200px;
 $gutter-width: 1.5rem;
 
+* {
+  box-sizing: border-box;
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -18,25 +22,24 @@ $gutter-width: 1.5rem;
 
 .row {
   display: grid;
-  grid-template-columns: repeat($num-cols, 1fr);
+  grid-template-columns: repeat($number-of-columns, 1fr);
   grid-column-gap: $gutter-width;
 }
 
 .col {
-  grid-column: unquote("1 / " + ($num-cols + 1));
+  grid-column-end: span ($number-of-columns + 1);
 }
 
 $i: 1;
-@while $i <= $num-cols {
+@while $i <= $number-of-columns {
   .sm-#{$i} {
     grid-column-end: span $i;
-    order: 1;
   }
   $i: $i + 1;
 }
 
 $i: 1;
-@while $i <= $num-cols {
+@while $i <= $number-of-columns {
   .sm-offset-#{$i} {
     grid-column-start: $i;
   }
@@ -44,7 +47,7 @@ $i: 1;
 }
 
 $i: 1;
-@while $i <= $num-cols {
+@while $i <= $number-of-columns {
   .sm-order-#{$i} {
     order: $i;
   }
@@ -53,16 +56,15 @@ $i: 1;
 
 @media (min-width: $breakpoint-sm) {
   $i: 1;
-  @while $i <= $num-cols {
+  @while $i <= $number-of-columns {
     .md-#{$i} {
       grid-column-end: span $i;
-      order: 1;
     }
     $i: $i + 1;
   }
 
   $i: 1;
-  @while $i <= $num-cols {
+  @while $i <= $number-of-columns {
     .md-offset-#{$i} {
       grid-column-start: $i;
     }
@@ -70,7 +72,7 @@ $i: 1;
   }
 
   $i: 1;
-  @while $i <= $num-cols {
+  @while $i <= $number-of-columns {
     .md-order-#{$i} {
       order: $i;
     }
@@ -80,7 +82,7 @@ $i: 1;
 
 @media (min-width: $breakpoint-lg) {
   $i: 1;
-  @while $i <= $num-cols {
+  @while $i <= $number-of-columns {
     .lg-#{$i} {
       grid-column-end: span $i;
     }
@@ -88,7 +90,7 @@ $i: 1;
   }
 
   $i: 1;
-  @while $i <= $num-cols {
+  @while $i <= $number-of-columns {
     .lg-offset-#{$i} {
       grid-column-start: $i;
     }
@@ -96,7 +98,7 @@ $i: 1;
   }
 
   $i: 1;
-  @while $i <= $num-cols {
+  @while $i <= $number-of-columns {
     .lg-order-#{$i} {
       order: $i;
     }
